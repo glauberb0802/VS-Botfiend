@@ -1,4 +1,0 @@
-Flash lol
-
-Value 1: Duration (0 = Instant)
-Value 2: Target transparency value

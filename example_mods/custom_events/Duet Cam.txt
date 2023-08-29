@@ -1,6 +1,0 @@
-Enables or disables a "duet cam" 
-(It focuses onto GF)
-
-Value 1: If it's on or off
-
-Value 2: 
