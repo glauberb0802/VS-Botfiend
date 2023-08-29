@@ -133,6 +133,11 @@ class PauseSubState extends MusicBeatSubstate
 
 		regenMenu();
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+		
+		#if mobile
+		addVirtualPad(UP_DOWN, A);
+		addVirtualPadCamera();
+		#end
 	}
 
 	var holdTime:Float = 0;
@@ -257,7 +262,7 @@ class PauseSubState extends MusicBeatSubstate
 
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
-						MusicBeatState.switchState(new MainMenuState());
+						MusicBeatState.switchState(new StoryMenuState());
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
 					}
