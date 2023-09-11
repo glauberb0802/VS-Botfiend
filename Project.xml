@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': VS Botfiend" file="Botfiend" packageName="com.humbay.botfiend" package="com.humbay.botfiend" main="Main" version="0.2.8" company="Humbaynoob" />
+	<app title="Friday Night Funkin': Psych Engine" file="PsychEngine" packageName="com.shadowmario.psychengineandroid" package="com.shadowmario.psychengineandroid" main="Main" version="0.2.8" company="ShadowMario" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -20,7 +20,8 @@
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
-        <window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
+	<!--These window settings apply to all targets-->
+	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
@@ -71,11 +72,13 @@
 	<section if="PRELOAD_ALL">
 		<library name="songs"         preload="true" />
 		<library name="shared"        preload="true" />
+		
 	</section>
 	
 	<section if="NO_PRELOAD_ALL">
 		<library name="songs"         preload="false" />
 		<library name="shared"        preload="false" />
+		
 	</section>
 	
 	<assets path="assets/videos"        library="videos"        if="VIDEOS_ALLOWED"/>
@@ -83,9 +86,10 @@
 	<assets path="assets/songs"         library="songs"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.ogg" if="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.mp3" unless="web"/>
-        <assets path="plugins/" rename='' if="windows"/>
-	<assets path="dlls/" rename='' if="windows"/>
-        
+	
+	<section if="MODS_ALLOWED">
+		<assets path='example_mods' rename='mods' embed='false'/>
+	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<!-- <template path='mods' /> -->
 	
@@ -123,6 +127,8 @@
 
 	<!--In case you want to use nape with flixel-->
 	<!--<haxelib name="nape-haxe4" />-->
+	
+	<android target-sdk-version="29"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -165,6 +171,9 @@
 	<!--Used for Izzy Engine's crash handler-->
 	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
 	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	
+	<!--<architecture name="armv7" exclude="arm64" if="android" />
+	<architecture name="x86" if="android" />-->
 
 	<!-- _________________________________ Custom _______________________________ -->
 
